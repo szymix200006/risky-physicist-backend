@@ -4,13 +4,12 @@ const mysql = require('mysql2/promise');
 const cors = require('cors');
 
 const app = express();
-const port = 3000;
 
 app.use(cors())
 
 const poll = mysql.createPool(
     {
-        uri: 'mysql://root:OIOxasMVoNwKaZpbTTrHJgkmJMgcINMd@autorack.proxy.rlwy.net:30301/railway', 
+        uri: process.env.DB_URL, 
         connectionLimit: 5,
 }
 );
