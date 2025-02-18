@@ -8,9 +8,7 @@ const port = 3000;
 
 app.use(cors())
 
-const url = `mysql://root:OIOxasMVoNwKaZpbTTrHJgkmJMgcINMd@mysql.railway.internal:3306/railway`;
-
-const poll = mysql.createPool(url
+const poll = mysql.createConnection(process.env.DB_URL
 //     {
 //     host: process.env.DB_HOST,
 //     user: process.env.DB_USER,
@@ -20,17 +18,13 @@ const poll = mysql.createPool(url
 // }
 );
 
-async function getQuestions(level) {
-    let connection;
+async function getQuestions(level) {   
     try {
-        connection = await poll.getConnection();
-        const rows = await connection.query('SELECT * FROM questions WHERE level = ?', [level]);
+        const [rows] = await poll.query('SELECT * FROM questions WHERE level = ?', [level]);
         return rows;
     } catch(error) {
         throw error;
-    } finally {
-        if(connection) connection.release();
-    }
+    } 
 }
 
 app.get('/:level', async (req, res) => {
@@ -43,7 +37,6 @@ app.get('/:level', async (req, res) => {
     try {
         const questions = await getQuestions(level);
         return res.json({level, questions});
-        console.log(res)
     } catch(error) {
         return res.status(500).send({error: 'Database error', details: error.message})
     }
