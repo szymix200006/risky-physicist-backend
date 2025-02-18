@@ -1,8 +1,8 @@
-FROM node:17-alpine
+FROM node:alpine
 
 WORKDIR /server
 
-COPY package.json .
+COPY package*.json ./
 
 RUN npm install
 
@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["node", "server.js"]
+CMD ["npm", "start"]

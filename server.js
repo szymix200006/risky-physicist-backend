@@ -1,5 +1,6 @@
+require("dotenv").config();
 const express = require('express');
-const mariadb = require('mariadb');
+const mysql = require('mysql2');
 const cors = require('cors');
 
 const app = express();
@@ -7,13 +8,17 @@ const port = 3000;
 
 app.use(cors())
 
-const poll = mariadb.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'risky_physicist',
-    connectionLimit: 5
-});
+const url = `mysql://root:OIOxasMVoNwKaZpbTTrHJgkmJMgcINMd@mysql.railway.internal:3306/railway`;
+
+const poll = mysql.createPool(url
+//     {
+//     host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASSWORD,
+//     database: process.env.DB_NAME,
+//     connectionLimit: 5
+// }
+);
 
 async function getQuestions(level) {
     let connection;
@@ -45,5 +50,5 @@ app.get('/:level', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server is running`);
 });
