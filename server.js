@@ -39,6 +39,7 @@ app.get('/:level', async (req, res) => {
         const questions = await getQuestions(level);
         return res.json({level, questions});
     } catch(error) {
+        console.error(error)
         return res.status(500).send({error: 'Database error', details: error.message})
     }
 });
