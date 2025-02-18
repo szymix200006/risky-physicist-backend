@@ -10,7 +10,7 @@ app.use(cors())
 
 const poll = mysql.createPool(
     {
-        uri: process.env.DB_URL, 
+        uri: 'mysql://root:OIOxasMVoNwKaZpbTTrHJgkmJMgcINMd@autorack.proxy.rlwy.net:30301/railway', 
         connectionLimit: 5,
 }
 );
