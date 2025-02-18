@@ -16,7 +16,7 @@ const poll = mysql.createPool(
 
 async function getQuestions(level) {   
     try {
-        const [rows] = await poll.query('SELECT * FROM questions WHERE level = ?', [level]);
+        const [rows] = await poll.query('SELECT * FROM question WHERE level = ?', [level]);
         return rows;
     } catch(error) {
         throw error;
