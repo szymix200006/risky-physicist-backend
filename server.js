@@ -42,7 +42,7 @@ app.get('/:level', async (req, res) => {
 (() => {
     poll.query(
     "INSERT INTO question (`id`, `level`, `content`, `answer`) VALUES" +
-"(1, 'easy', 'What is 2 + 2?', 4)," +
+
 "(2, 'easy', 'How many days are in a week?', 7)," +
 "(3, 'easy', 'What is 10 divided by 2?', 5)," +
 "(4, 'easy', 'How many sides does a triangle have?', 3)," +
