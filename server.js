@@ -154,7 +154,7 @@ app.get('/:level', async (req, res) => {
 "(109, 'legendary', 'What is 9 factorial (9!)?', 362880)," +
 "(110, 'legendary', 'How many permutations are there of 6 items?', 720)," +
 "(111, 'legendary', 'What is the smallest 4-digit number divisible by both 12 and 15?', 1020)," +
-"(112, 'legendary', 'What is the area of a triangle with sides 13, 14, and 15 (using Heron\'s formula)?', 84)," +
+"(112, 'legendary', 'What is the area of a triangle with sides 13, 14, and 15 (using Herons formula)?', 84)," +
 "(113, 'legendary', 'How many degrees are there in 7/8 of a circle?', 315)," +
 "(114, 'legendary', 'What is the largest prime number below 200?', 199)," +
 "(115, 'legendary', 'What is the remainder when 123456 is divided by 789?', 372)," +
